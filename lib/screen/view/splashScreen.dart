@@ -7,14 +7,16 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Timer(Duration(seconds: 3), () => Navigator.of(context).pushNamed('/home'));
+    Timer(Duration(seconds: 5), () => Navigator.of(context).pushNamed('/home'));
     return Scaffold(
       body: Container(
-        height: 900,
+        height: 970,
         width: 900,
         decoration: BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.cover, image: AssetImage('assets/images.png'))),
+          image: DecorationImage(fit: BoxFit.cover,
+            image: AssetImage('assets/splash.png'),
+          ),
+        ),
       ),
     );
   }
