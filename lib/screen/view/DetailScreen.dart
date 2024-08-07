@@ -10,7 +10,7 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ProductProvider productProviderFalse =
-    Provider.of<ProductProvider>(context, listen: false);
+        Provider.of<ProductProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: Text('detailScreen'),
@@ -21,19 +21,45 @@ class DetailScreen extends StatelessWidget {
             height: 250,
             width: 300,
             decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(
-                  productProviderFalse.productList[selectedIndex].image
-                )
-              )
-            ),
-            
-          ),
+              borderRadius: BorderRadius.circular(10),
 
-          Text('Title : -',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                image: DecorationImage(
+                    image: NetworkImage(productProviderFalse
+                        .productList[selectedIndex].image))),
+          ),
+          Text(
+            'Price : -',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+          Text('${productProviderFalse.productList[selectedIndex].price.toString()}'),
+          Text(
+            'Title : -',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
           Text('${productProviderFalse.productList[selectedIndex].title}'),
-          Text('Description : -',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
-          Text(textAlign: TextAlign.center,'${productProviderFalse.productList[selectedIndex].description}')
+          Text(
+            'Description : -',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+          Text(
+              textAlign: TextAlign.center,
+              '${productProviderFalse.productList[selectedIndex].description}'),
+            Spacer(),
+          GestureDetector(
+            onTap: ()
+            {
+              Navigator.of(context).pushNamed('/cart');
+            },
+            child: Container(
+              height: 60,
+              width: 150,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(20)
+              ),
+              child: Center(child: Text('Add to Cart',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),)),
+            ),
+          )
         ],
       ),
     );

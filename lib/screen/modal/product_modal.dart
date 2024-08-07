@@ -19,7 +19,7 @@ class ProductModal {
   factory ProductModal.fromJson(Map m1) {
     return ProductModal(
       id: m1['id'],
-      price: m1['price'],
+      price: m1['price'].toDouble(),
 
       title: m1['title'],
       description: m1['description'],
