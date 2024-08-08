@@ -1,3 +1,4 @@
+import 'package:advance_flutter_exam/screen/provider/cart_Provider.dart';
 import 'package:advance_flutter_exam/screen/view/DetailScreen.dart';
 import 'package:advance_flutter_exam/screen/view/cartScreen.dart';
 import 'package:advance_flutter_exam/screen/view/homeScreen.dart';
@@ -8,17 +9,17 @@ import 'package:provider/provider.dart';
 import 'screen/provider/product_provider.dart';
 
 void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => ProductProvider(),
-      child: MaterialApp(
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => ProductProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CartProvider(),
+        )
+      ],
+      builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: {
           '/home': (context) => HomeScreen(),
@@ -27,6 +28,6 @@ class MyApp extends StatelessWidget {
           '/cart': (context) => CartScreen(),
         },
       ),
-    );
-  }
+    ),
+  );
 }

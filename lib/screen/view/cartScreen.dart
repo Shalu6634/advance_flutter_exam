@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../utils/global.dart';
+import '../provider/cart_Provider.dart';
+import '../provider/product_provider.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return   Scaffold(
+    CartProvider cartProvider =
+        Provider.of<CartProvider>(context, listen: false);
+    return Scaffold(
       appBar: AppBar(
         title: Text('Cart Page'),
       ),
@@ -17,29 +22,29 @@ class CartScreen extends StatelessWidget {
           children: [
             ...List.generate(
               cartList.length,
-                  (index) {
+              (index) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                     height: 150,
                     width: 500,
                     decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
+                      color: Colors.grey,
                     ),
                     child: Column(
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                              cartList[index].category),
+                          child: Text(cartList[index].category),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                              cartList[index].title),
+                          child: Text(cartList[index].title),
                         ),
-                        GestureDetector(
-                            child: Icon(Icons.delete))
+                        GestureDetector(onTap: () {
+                          cartList.removeAt(index);
+                          cartProvider.removeqtyAll(index);
+                        }, child: Icon(Icons.delete))
                       ],
                     ),
                   ),

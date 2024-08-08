@@ -5,17 +5,20 @@ import '../../utils/global.dart';
 
 
 class CartProvider extends ChangeNotifier{
+  dynamic price=0;
   void add(int index)
   {
-    qty[index]++;
     notifyListeners();
   }
-  void removeQty(int index)
+
+
+  void removeqtyAll(int index)
   {
-    if(qty[index]>0)
-    {
-      qty[index]--;
-    }
+    // price -= cartList[index].price;
+    // cartList.removeAt(index);
+    // qty[index] = 1;
+    print(cartList);
+    notifyListeners();
   }
 
 }

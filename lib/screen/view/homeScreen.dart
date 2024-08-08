@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
         future: productProviderFalse.fromList(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return GridView.builder(
+            return GridView.builder(itemCount: productProviderFalse.productList.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                 ),

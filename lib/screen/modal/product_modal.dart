@@ -1,6 +1,6 @@
 class ProductModal {
   late int id;
-  late double price;
+  late dynamic price;
 
   late String title, description, image, category;
 
